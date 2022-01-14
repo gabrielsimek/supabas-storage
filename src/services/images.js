@@ -1,7 +1,12 @@
 import { client, checkError } from './client';
 
-export const upload = async (file) => {
-  const res = await client.storage.from('images').upload(`public/${file.name}`, file);
+export const upload = async (file, name) => {
+  let res;
+  if (name.length > 0) {
+    res = await client.storage.from('images').upload(`public/${name}`, file);
+  } else {
+    res = await client.storage.from('images').upload(`public/${file.name}`, file);
+  }
   return checkError(res);
 };
 

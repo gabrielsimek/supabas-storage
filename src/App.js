@@ -5,10 +5,13 @@ import './App.css';
 function App() {
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState('');
+  const [name, setName] = useState('');
   const [imageUrl, setImageUrl] = useState('');
+
   const handleUpload = async () => {
-    const res = await upload(file);
+    const res = await upload(file, name);
     console.log(`\x1b[35m%s\x1b[0m`, 'res: ', res);
+    alert('Probably uploaded');
   };
 
   const handleGetUrl = () => {
@@ -19,6 +22,10 @@ function App() {
   return (
     // SET IMAGE
     <div className="App">
+      <label>Enter Optional File Name</label>
+      <input type="text" onChange={(e) => {
+        setName(e.target.value);
+      }}/>
       <input
         type="file"
         onChange={(e) => {
@@ -32,7 +39,6 @@ function App() {
             <img alt="output" src={URL.createObjectURL(file)} />
           </div>
           <button onClick={handleUpload}>Upload to Supabase</button>
-     
         </>
       )}
   
@@ -48,9 +54,7 @@ function App() {
           onChange={({ target }) => setFileName(target.value)}
         />
         <button onClick={handleGetUrl}>Get Image</button>
-       
       </div>
-  
     </div>
   );
 }
