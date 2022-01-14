@@ -9,7 +9,7 @@ function App() {
   const [imageUrl, setImageUrl] = useState('');
 
   const handleUpload = async () => {
-    const res = await upload(file, name);
+    await upload(file, name);
     alert('Probably uploaded');
   };
 
