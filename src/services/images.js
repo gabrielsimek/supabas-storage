@@ -12,12 +12,10 @@ export const upload = async (file, name) => {
 
 
 export const getImageUrl = (fileName) => {
-  console.log(fileName);
   const { publicURL, error } = client.storage
     .from('images')
     .getPublicUrl(`public/${fileName}`);
 
-  console.log(publicURL);
   if (error) throw error;
   else return publicURL;
 };

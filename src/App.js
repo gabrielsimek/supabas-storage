@@ -10,7 +10,6 @@ function App() {
 
   const handleUpload = async () => {
     const res = await upload(file, name);
-    console.log(`\x1b[35m%s\x1b[0m`, 'res: ', res);
     alert('Probably uploaded');
   };
 
@@ -29,7 +28,6 @@ function App() {
       <input
         type="file"
         onChange={(e) => {
-          // console.log(`\x1b[35m%s\x1b[0m`, 'e.target.files: ', e.target.files, [...e.target.files]);
           setFile(e.target.files[0]);
         }}
       />
@@ -45,6 +43,7 @@ function App() {
       {/* GET IMAGE */}
       <div>
         <h3>Image from Supabase</h3>
+        <p>(Type in the file name)</p>
         {imageUrl && <div className="output">
           <img alt="output" src={imageUrl} />
         </div>}
